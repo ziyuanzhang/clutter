@@ -36,6 +36,12 @@ export default function Index(props) {
       }
     }
   };
+  const handleDelete = () => {
+    handleChangeFn({
+      name: "",
+      path: ""
+    });
+  };
   const handleDownload = () => {
     //查看 上传的图片或文档
     if (defaultFile.fileUrl) {
@@ -48,18 +54,26 @@ export default function Index(props) {
   return (
     <div className={styles.uploadComponent}>
       <div className={styles.main}>
-        <span className={styles.txt} onClick={handleDownload}>
-          {defaultFile.fileName}
-        </span>
-        <span className={styles.divider}></span>
-        <span className={styles.btn}>
+        <div className={styles.txt}>
+          <span className={styles.name} onClick={handleDownload}>
+            {defaultFile.fileName}
+          </span>
+
+          {defaultFile.fileName && (
+            <i className={styles.delete} onClick={handleDelete}>
+              ✕
+            </i>
+          )}
+        </div>
+        <div className={styles.divider}></div>
+        <div className={styles.btn}>
           <i
             className={classNames(
               styles.icon,
               "iconfont icon-a-shangchuanbeifen4"
             )}></i>
           上传文件
-        </span>
+        </div>
         <input
           type="file"
           className={styles.input}
