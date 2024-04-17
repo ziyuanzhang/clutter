@@ -3,6 +3,8 @@ export const checkEmail = (mail) => {
   const strRegex = /^(\w-*\.*)+@(\w-?)+(\.\w{2,})+$/;
   return strRegex.test(mail);
 };
+export const numberReg = /^[0-9]+\d$/;
+export const phoneReg = /^1[3-9]\d{9}$/;
 export const checkPhone = (tel) => {
   return /^1[3456789]\d{9}$/.test(tel);
 };
@@ -57,13 +59,13 @@ export const checkIdCard = (id) => {
   }
   return flag;
 };
-// ## 身份证匹配替换
+//  身份证匹配替换
 export function encryptionID() {
   // let idCard = "23012119870130221X";
   // idCard.replace(/(.{6}).\*(.{4})/, '$1**\*\*\*\***$2')--》错误
   // idCard.replace(/^(\d{6})\d{8}(.{4}$)/g, `$1${Array(9).join('\*')}$2`)--》正确
 }
-
+// 下载图片
 export const getBase64Image = (img) => {
   let canvas = document.createElement("canvas");
   canvas.width = img.width;
@@ -98,7 +100,7 @@ export const downloadImg = (imgPath: string, imgName: string) => {
     document.body.removeChild(downloadLink);
   };
 };
-
+//---------
 export const uuid = () => {
   var s = [];
   var hexDigits = "0123456789abcdef";
@@ -131,6 +133,7 @@ export let guid = () => {
     S4()
   );
 };
+//-------------------
 export const getUrlParams = (url) => {
   var params = url.split("?")[1].split("&");
   var obj = {};
@@ -151,8 +154,3 @@ export const getQueryString = (param: string): string | null => {
   const urlObj = new URL(window.location.href);
   return urlObj.searchParams.get(param);
 };
-export const numberReg = /^[0-9]+\d$/;
-export const phoneReg = /^1[3-9]\d{9}$/;
-
-
-
